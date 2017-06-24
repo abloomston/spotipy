@@ -140,7 +140,7 @@ class Spotify(object):
 
     def _get(self, url, args=None, payload=None, **kwargs):
         if args:
-            kwargs.update(args)
+            kwargs.update({k: v for k, v in args.items() if v is not None})
         retries = self.max_get_retries
         delay = 1
         while retries > 0:
